@@ -8,7 +8,7 @@ class Budget(Base):
     __tablename__ = "budget"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key= True, default=uuid.uuid4)
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("user.id"), index= True)
+    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), index= True)
     category: Mapped[str | None] = mapped_column(String(50))
     monthly_limit: Mapped[float] = mapped_column(Numeric(12, 2), nullable= False)
     month_year: Mapped[str] = mapped_column(String(7), comment="Format: yyyy-mm")
