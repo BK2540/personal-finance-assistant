@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.api import auth, transactions
 
 app = FastAPI(
     title="mini API",
@@ -14,6 +15,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth.router)
+app.include_router(transactions.router)
+# app.include_router(budgets.router)
+# app.include_router(insights.router)
+
 
 @app.get("/health")
 async def health_check():
