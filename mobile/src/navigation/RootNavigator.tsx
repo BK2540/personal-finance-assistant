@@ -7,7 +7,9 @@ import MainTabs from "./MainTabs";
 import { COLORS } from "../constants/theme";
 
 export default function RootNavigator() {
-  const { token, isLoading, loadToken } = useAuthStore();
+  const token = useAuthStore((s) => s.token);
+  const isLoading = useAuthStore((s) => s.isLoading);
+  const loadToken = useAuthStore((s) => s.loadToken);
 
   // restore saved token on app launch
   useEffect(() => {
@@ -17,7 +19,7 @@ export default function RootNavigator() {
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator color={COLORS.primary} size={"large"} />
+        <ActivityIndicator color={COLORS.electricInk} size={"large"} />
       </View>
     );
   }

@@ -1,7 +1,8 @@
-import axios, { create } from 'axios';
+import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 
-const BASE_URL = 'http://172.20.1.83:8000'
+// 10.0.2.2 = localhost on Android Emulator — change to your machine IP for physical device
+const BASE_URL = 'http://10.0.2.2:8000'
 
 export const api = axios.create({
     baseURL: BASE_URL,
